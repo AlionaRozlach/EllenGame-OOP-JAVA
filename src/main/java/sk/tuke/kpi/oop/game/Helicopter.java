@@ -14,7 +14,7 @@ public class Helicopter extends AbstractActor {
     //private Actor play;
 
     public Helicopter() {
-        helicopter = new Animation("sprites/ heli.png",64,64,0.07f);
+        helicopter = new Animation("sprites/heli.png",64,64,0.07f);
         setAnimation(helicopter);
     }
 

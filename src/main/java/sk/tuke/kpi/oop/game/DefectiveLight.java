@@ -1,6 +1,7 @@
 package sk.tuke.kpi.oop.game;
 
 import org.jetbrains.annotations.NotNull;
+import sk.tuke.kpi.gamelib.Disposable;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.actions.Invoke;
 import sk.tuke.kpi.gamelib.framework.actions.Loop;
@@ -9,6 +10,7 @@ import sk.tuke.kpi.gamelib.framework.actions.Loop;
 
 public class DefectiveLight extends Light{
 
+    private Disposable disposable;
     public DefectiveLight()
     {
         super();
@@ -32,9 +34,4 @@ public class DefectiveLight extends Light{
         new Loop<>(new Invoke<>(this::defectiveLight)).scheduleFor(this);
     }
 
-   /* @Override
-    public boolean repair()
-    {
-
-    }*/
 }
