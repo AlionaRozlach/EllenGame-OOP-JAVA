@@ -3,11 +3,11 @@ package sk.tuke.kpi.oop.game.tools;
 import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
-import sk.tuke.kpi.oop.game.Reactor;
+
 
 public class BreakableTool< Acter extends Actor> extends AbstractActor implements Usable<Acter>{
 
-    private int remainingUses;
+    private int remainingUses = 10;
 
     public BreakableTool(int pocet)
     {
@@ -31,5 +31,9 @@ public class BreakableTool< Acter extends Actor> extends AbstractActor implement
         return this.remainingUses;
     }
 
+    public int getRemainingUses()
+    {
+        return get();
+    }
 
 }

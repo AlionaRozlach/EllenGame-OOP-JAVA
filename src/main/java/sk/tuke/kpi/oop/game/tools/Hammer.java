@@ -41,6 +41,6 @@ public class Hammer extends BreakableTool<Reactor>{
 
     public int getRemainingUses()
     {
-        return this.get();
+        return get();
     }
 }

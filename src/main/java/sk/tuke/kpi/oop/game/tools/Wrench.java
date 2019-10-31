@@ -22,6 +22,6 @@ public class Wrench extends BreakableTool<DefectiveLight> {
 
     public int getRemainingUses()
     {
-        return this.get();
+        return get();
     }
 }

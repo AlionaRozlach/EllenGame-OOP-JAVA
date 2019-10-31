@@ -9,36 +9,39 @@ public class Light extends AbstractActor implements Switchable, EnergyConsumer {
     private Animation light_off;
     private boolean electric;
     private boolean prepinac;
+    private boolean state;
 
     public Light()
     {
         light_on = new Animation("sprites/light_on.png",16,16);
         light_off = new Animation ("sprites/light_off.png",16,16);
-        if((electric == false && prepinac == true) || (electric == false && prepinac == false) || (electric==true && prepinac == false))
+        if(electric == false )
         {
             setAnimation(light_off);
         }
-        else setAnimation(light_on);
-
+        if(electric == true ) setAnimation(light_on);
     }
 
     public void toggle()
     {
         if(this.electric == true)
         {
-            if(this.prepinac == true)
+            if(state==true)//this.prepinac == true
             {
+                state = false;
                 this.prepinac = false;
                 setAnimation(light_off);
             }
             else
             {
+                state = true;
                 this.prepinac = true;
                 setAnimation(light_on);
             }
         }
         else
         {
+            state = false;
             setAnimation(light_off);
         }
     }
@@ -67,28 +70,19 @@ public class Light extends AbstractActor implements Switchable, EnergyConsumer {
     public void turnOn() {
         if(electric == true && prepinac == false)
         {
+                state = true;
                 prepinac = true;
                 setAnimation(light_on);
         }
-        else if(electric == true && prepinac == true)
-        {
-            prepinac = true;
-            setAnimation(light_on);
-        }
-
     }
 
     @Override
     public void turnOff() {
         if(electric == true && prepinac == true)
         {
+            state = false;
             prepinac = false;
                 setAnimation(light_off);
-        }
-        if(electric == true && prepinac == false)
-        {
-            prepinac = false;
-            setAnimation(light_off);
         }
     }
 
