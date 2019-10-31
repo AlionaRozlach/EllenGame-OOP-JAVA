@@ -3,7 +3,7 @@ package sk.tuke.kpi.oop.game.tools;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 import sk.tuke.kpi.oop.game.Reactor;
 
-public class Hammer extends BreakableTool implements Usable {
+public class Hammer extends BreakableTool{
 
     //private int pocet = 1;
     private Animation kladivo;
