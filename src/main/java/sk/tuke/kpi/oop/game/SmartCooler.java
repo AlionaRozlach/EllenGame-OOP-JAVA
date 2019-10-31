@@ -3,11 +3,9 @@ package sk.tuke.kpi.oop.game;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.actions.Invoke;
 import sk.tuke.kpi.gamelib.framework.actions.Loop;
-import sk.tuke.kpi.oop.game.actions.PerpetualReactorHeating;
 
 public class SmartCooler extends Cooler{
 
-    private Cooler coller;
     private Reactor reactor = super.getReactor();
    private boolean state = false;
     public SmartCooler(Reactor reactor)

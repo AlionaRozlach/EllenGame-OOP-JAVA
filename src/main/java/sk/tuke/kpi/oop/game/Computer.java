@@ -4,10 +4,7 @@ import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
 public class Computer extends AbstractActor implements EnergyConsumer{
-    private int a;
-    private int b;
-    private float c;
-    private float d;
+
     private Animation normalAnimation ;
 
     private boolean electricity;
@@ -41,7 +38,7 @@ public class Computer extends AbstractActor implements EnergyConsumer{
     public int sub(int a, int b)
     {
         if(this.electricity == true) {
-            return a * b;
+            return a - b;
         }
         normalAnimation.stop();
         return 0;
@@ -50,7 +47,7 @@ public class Computer extends AbstractActor implements EnergyConsumer{
     public float sub(float c, float d)
     {
         if(this.electricity == true) {
-            return c * d;
+            return c - d;
         }
         normalAnimation.stop();
         return 0;

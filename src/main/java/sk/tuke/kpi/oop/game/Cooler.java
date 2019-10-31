@@ -7,15 +7,16 @@ import sk.tuke.kpi.gamelib.framework.actions.Loop;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
 public class Cooler extends AbstractActor implements Switchable {
-    private Animation cooler;
+    private Animation anim;
     private boolean state;
     private Reactor reactor;
+
     public Cooler(Reactor reactor)
     {
         this.reactor = reactor;
-        cooler = new Animation("sprites/fan.png",32,32,0.2f);
-        cooler.stop();
-        setAnimation(cooler);
+        anim = new Animation("sprites/fan.png",32,32,0.2f);
+        anim.stop();
+        setAnimation(anim);
 
     }
 
@@ -24,15 +25,15 @@ public class Cooler extends AbstractActor implements Switchable {
         return this.reactor;
     }
 
-   public void update_animation(boolean state)
+   public void updateAnimation(boolean state)
     {
         if(state == false)
         {
-            cooler.play();
+            anim.play();
         }
         else
         {
-            cooler.stop();
+            anim.stop();
         }
     }
 
@@ -42,9 +43,8 @@ public class Cooler extends AbstractActor implements Switchable {
         if(this.state == false)
         {
             this.state  = true;
-            update_animation(false);
+            updateAnimation(false);
         }
-        else return;
     }
 
     @Override
@@ -53,9 +53,8 @@ public class Cooler extends AbstractActor implements Switchable {
         if(this.state == true)
         {
             this.state = false;
-            update_animation(true);
+            updateAnimation(true);
         }
-        else return;
     }
 
     @Override
@@ -70,10 +69,8 @@ public class Cooler extends AbstractActor implements Switchable {
         if(reactor != null && state == true)
         {
            int dec = 1;
-           reactor.decreaseTemperature(1);
+           reactor.decreaseTemperature(dec);
         }
-        return;
-
     }
 
     @Override

@@ -14,7 +14,11 @@ public class Light extends AbstractActor implements Switchable, EnergyConsumer {
     {
         light_on = new Animation("sprites/light_on.png",16,16);
         light_off = new Animation ("sprites/light_off.png",16,16);
-        setAnimation(light_off);
+        if((electric == false && prepinac == true) || (electric == false && prepinac == false) || (electric==true && prepinac == false))
+        {
+            setAnimation(light_off);
+        }
+        else setAnimation(light_on);
 
     }
 
@@ -53,7 +57,7 @@ public class Light extends AbstractActor implements Switchable, EnergyConsumer {
         else setAnimation(light_off);
     }
 
-    public void update_Animation(boolean prepinac)
+    public void updateAnimation(boolean prepinac)
     {
         if(prepinac == true) setAnimation(light_off);
         else setAnimation(light_on);
@@ -61,26 +65,30 @@ public class Light extends AbstractActor implements Switchable, EnergyConsumer {
 
     @Override
     public void turnOn() {
-        if(electric == true)
+        if(electric == true && prepinac == false)
         {
-            if(prepinac == false)
-            {
                 prepinac = true;
                 setAnimation(light_on);
-            }
+        }
+        else if(electric == true && prepinac == true)
+        {
+            prepinac = true;
+            setAnimation(light_on);
         }
 
     }
 
     @Override
     public void turnOff() {
-        if(electric == true)
+        if(electric == true && prepinac == true)
         {
-            if(prepinac == true)
-            {
-                prepinac = false;
+            prepinac = false;
                 setAnimation(light_off);
-            }
+        }
+        if(electric == true && prepinac == false)
+        {
+            prepinac = false;
+            setAnimation(light_off);
         }
     }
 

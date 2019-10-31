@@ -10,7 +10,6 @@ import sk.tuke.kpi.gamelib.framework.actions.Loop;
 
 public class DefectiveLight extends Light{
 
-    private Disposable disposable;
     public DefectiveLight()
     {
         super();
