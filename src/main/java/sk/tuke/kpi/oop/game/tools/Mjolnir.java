@@ -4,15 +4,18 @@ import sk.tuke.kpi.gamelib.graphics.Animation;
 
 public class Mjolnir extends Hammer {
 
-
     private Animation molot;
-    //private int pocet;
+
 
     public Mjolnir()
     {
         super(4);
-        this.molot = new Animation("sprites/hammer.png");
-        setAnimation(this.molot);
+       molot = new Animation("sprites/hammer.png");
+        setAnimation(molot);
     }
 
+    public int getRemainingUses()
+    {
+        return this.get();
+    }
 }

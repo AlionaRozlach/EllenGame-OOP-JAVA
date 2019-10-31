@@ -113,7 +113,8 @@ public class Reactor extends AbstractActor implements Switchable,Repairable{
     public boolean repair()
     {
        if(this.damage< 0 || this.damage>100) return false;
-        if(this.damage>0 && this.damage<100)
+
+        if((this.damage>0 && this.damage<100) || (this.damage<100 && this.temperature>4000))//posle ||
         {
             if (this.damage > 50) {
                 this.damage-=50;
@@ -131,25 +132,26 @@ public class Reactor extends AbstractActor implements Switchable,Repairable{
         else return false;
     }
 
-    public boolean extinguish(FireExtinguisher fire)
+    public boolean extinguish()
     {
-        if(fire != null) {
+        if(temperature>4000) {
             this.temperature -= 4000;
             setAnimation(ext);
             return true;
         }
+
         else return false;
     }
 
     @Override
     public void turnOn()
     {
-        if(this.state == false)
+        if(this.state == false && damage!= 100)//damage!= 100
         {
             this.state = true;
             updateAnimation();
         }
-        else return;
+
     }
 
     public void update_off()
@@ -183,6 +185,13 @@ public class Reactor extends AbstractActor implements Switchable,Repairable{
         if(this.state == true) return true;
         else return false;
     }
+
+    @Override
+    public void toggle() {
+        if(isOn()) turnOff();
+        else turnOn();
+    }
+
 
     public void addDevice(EnergyConsumer device)
     {

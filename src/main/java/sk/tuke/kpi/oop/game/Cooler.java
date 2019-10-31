@@ -64,6 +64,12 @@ public class Cooler extends AbstractActor implements Switchable {
         else return false;
     }
 
+    @Override
+    public void toggle() {
+        if(isOn())turnOff();
+        else turnOn();
+    }
+
     private void coolReactor()
     {
         if(reactor != null && state == true)

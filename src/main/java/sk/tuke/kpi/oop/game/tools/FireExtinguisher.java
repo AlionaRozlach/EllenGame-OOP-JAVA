@@ -15,4 +15,10 @@ public class FireExtinguisher extends BreakableTool<Reactor> {
 
     }
 
+    public int getRemainingUses()
+    {
+        return this.get();
+    }
+
+
 }
