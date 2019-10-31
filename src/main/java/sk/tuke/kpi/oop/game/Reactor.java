@@ -10,7 +10,7 @@ import sk.tuke.kpi.oop.game.tools.Hammer;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Reactor extends AbstractActor implements Switchable{
+public class Reactor extends AbstractActor implements Switchable,Repairable{
     private int temperature;
     private int damage;
     private boolean state;
@@ -21,7 +21,7 @@ public class Reactor extends AbstractActor implements Switchable{
     private Animation reactor_off;
     private Animation ext;
     private Set<EnergyConsumer> devices;
-
+   // private Reactor reactor;
 
 
 
@@ -44,6 +44,7 @@ public class Reactor extends AbstractActor implements Switchable{
     {
         return temperature;
     }
+
 
     public int getDamage()
     {
@@ -108,6 +109,7 @@ public class Reactor extends AbstractActor implements Switchable{
         else return;
     }
 
+    @Override
     public boolean repair()
     {
        if(this.damage< 0 || this.damage>100) return false;

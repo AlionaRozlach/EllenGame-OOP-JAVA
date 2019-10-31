@@ -9,7 +9,7 @@ import sk.tuke.kpi.gamelib.graphics.Animation;
 public class Cooler extends AbstractActor implements Switchable {
     private Animation cooler;
     private boolean state;
-    Reactor reactor;
+    private Reactor reactor;
     public Cooler(Reactor reactor)
     {
         this.reactor = reactor;
@@ -17,6 +17,11 @@ public class Cooler extends AbstractActor implements Switchable {
         cooler.stop();
         setAnimation(cooler);
 
+    }
+
+    public Reactor getReactor()
+    {
+        return this.reactor;
     }
 
    public void update_animation(boolean state)

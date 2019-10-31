@@ -7,7 +7,7 @@ import sk.tuke.kpi.gamelib.framework.actions.Loop;
 
 
 
-public class DefectiveLight extends Light {
+public class DefectiveLight extends Light{
 
     public DefectiveLight()
     {
@@ -31,4 +31,10 @@ public class DefectiveLight extends Light {
         super.addedToScene(scene);
         new Loop<>(new Invoke<>(this::defectiveLight)).scheduleFor(this);
     }
+
+   /* @Override
+    public boolean repair()
+    {
+
+    }*/
 }

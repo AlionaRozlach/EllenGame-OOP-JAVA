@@ -7,9 +7,11 @@ import sk.tuke.kpi.oop.game.actions.PerpetualReactorHeating;
 
 public class SmartCooler extends Cooler{
 
-    Cooler coller;
+    private Cooler coller;
+    private Reactor reactor = super.getReactor();
    private boolean state = false;
-    public SmartCooler(Reactor reactor) {
+    public SmartCooler(Reactor reactor)
+    {
         super(reactor);
     }
 
