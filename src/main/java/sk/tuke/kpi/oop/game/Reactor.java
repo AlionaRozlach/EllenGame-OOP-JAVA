@@ -108,10 +108,10 @@ public class Reactor extends AbstractActor implements Switchable{
         else return;
     }
 
-    public boolean repair(Hammer hammer)
+    public boolean repair()
     {
        if(this.damage< 0 || this.damage>100) return false;
-        if(hammer != null && this.damage>0 && this.damage<100)
+        if(this.damage>0 && this.damage<100)
         {
             if (this.damage > 50) {
                 this.damage-=50;

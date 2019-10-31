@@ -3,10 +3,11 @@ package sk.tuke.kpi.oop.game.tools;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 import sk.tuke.kpi.oop.game.Reactor;
 
-public class Hammer extends BreakableTool implements Usable {
+public class Hammer extends BreakableTool<Reactor>{
 
     //private int pocet = 1;
     private Animation kladivo;
+    private Reactor reactor;
 
     public Hammer ()
     {
@@ -22,15 +23,16 @@ public class Hammer extends BreakableTool implements Usable {
         super(pocet);
     }
 
-   /* @Override
+    @Override
     public void useWith(Reactor reactor)
     {
         if(reactor != null )
         {
-           if(reactor.repair())
+           if(reactor.repair() == true)
            {
-               super.useWith(this.rea);
+               super.useWith(this.reactor);
            }
         }
-    }*/
+        else return;
+    }
 }
