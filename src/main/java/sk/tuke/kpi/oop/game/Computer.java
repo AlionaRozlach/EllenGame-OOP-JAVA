@@ -21,7 +21,7 @@ public class Computer extends AbstractActor implements EnergyConsumer{
 
 
 
-    private int add(int a, int b) {
+    public int add(int a, int b) {
         if (this.electricity == true) {
             return a + b;
         }
@@ -29,7 +29,7 @@ public class Computer extends AbstractActor implements EnergyConsumer{
         return 0;
     }
 
-    private float add(float c, float d)
+    public float add(float c, float d)
     {
         if(this.electricity == true) {
             return c + d;
@@ -38,7 +38,7 @@ public class Computer extends AbstractActor implements EnergyConsumer{
         return 0;
     }
 
-    private int sub(int a, int b)
+    public int sub(int a, int b)
     {
         if(this.electricity == true) {
             return a * b;
@@ -47,7 +47,7 @@ public class Computer extends AbstractActor implements EnergyConsumer{
         return 0;
     }
 
-    private float sub(float c, float d)
+    public float sub(float c, float d)
     {
         if(this.electricity == true) {
             return c * d;

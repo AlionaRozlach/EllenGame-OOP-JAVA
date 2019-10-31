@@ -6,7 +6,7 @@ public class Mjolnir extends Hammer {
 
 
     private Animation molot;
-    private int pocet;
+    //private int pocet;
 
     public Mjolnir()
     {

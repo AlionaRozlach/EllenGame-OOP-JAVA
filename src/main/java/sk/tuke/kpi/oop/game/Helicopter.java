@@ -8,7 +8,7 @@ import sk.tuke.kpi.gamelib.Scene;
 public class Helicopter extends AbstractActor {
 
     private Animation helicopter;
-    private Player player;
+   // private Player player;
 
     //private Actor helik;
     //private Actor play;
@@ -18,7 +18,7 @@ public class Helicopter extends AbstractActor {
         setAnimation(helicopter);
     }
 
-   /* public void searchAndDestroy()
+ /*  public void searchAndDestroy()
     {
         player = (Player)getScene().getFirstActorByName("Player");
         int x_act = player.getPosX();
@@ -27,7 +27,7 @@ public class Helicopter extends AbstractActor {
         int x_helic = getPosX();
         int y_helic = getPosY();
 
-        if(x_act !=)
+        while ()
 
     }*/
 }
