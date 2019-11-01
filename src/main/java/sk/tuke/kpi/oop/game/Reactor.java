@@ -4,8 +4,6 @@ import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 import sk.tuke.kpi.oop.game.actions.PerpetualReactorHeating;
-import sk.tuke.kpi.oop.game.tools.FireExtinguisher;
-import sk.tuke.kpi.oop.game.tools.Hammer;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -90,7 +88,6 @@ public class Reactor extends AbstractActor implements Switchable,Repairable{
                 this.damage = 100;
                 this.state = false;
             }
-            if (increment < 0) temperature = temperature;
         }
         else return;
     }
@@ -154,7 +151,7 @@ public class Reactor extends AbstractActor implements Switchable,Repairable{
 
     }
 
-    public void update_off()
+    public void updateOff()
     {
         if(this.damage<0 || this.damage>100) return;
 
@@ -174,7 +171,7 @@ public class Reactor extends AbstractActor implements Switchable,Repairable{
         if(this.state == true)
         {
             this.state = false;
-            update_off();
+            updateOff();
         }
         else return;
     }
@@ -199,7 +196,7 @@ public class Reactor extends AbstractActor implements Switchable,Repairable{
         devices.add(device);
         if(isOn() == true && this.damage<100)
         {
-            this.device.setPowered(true);
+            device.setPowered(true);
         }
         //else return;
     }
@@ -208,7 +205,7 @@ public class Reactor extends AbstractActor implements Switchable,Repairable{
     {
         if(device==null) return;
         devices.remove(device);
-            this.device.setPowered(false);
+            device.setPowered(false);
 
        // else return;
     }
