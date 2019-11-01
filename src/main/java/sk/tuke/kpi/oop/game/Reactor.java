@@ -12,7 +12,7 @@ public class Reactor extends AbstractActor implements Switchable,Repairable{
     private int temperature;
     private int damage;
     private boolean state;
-   // private EnergyConsumer device;
+  // private EnergyConsumer device;
     private Animation normalAnimation;
     private Animation hotAnimation;
     private Animation brokenAnimation;
@@ -138,11 +138,16 @@ public class Reactor extends AbstractActor implements Switchable,Repairable{
     @Override
     public void turnOn()
     {
-        if(this.state == false && damage!= 100)//damage!= 100
+        if(this.state == false && damage<100)//damage!= 100
         {
             this.state = true;
+
             updateAnimation();
         }
+        for(EnergyConsumer device : devices)
+    {
+        device.setPowered(true);
+    }
 
     }
 
@@ -163,12 +168,15 @@ public class Reactor extends AbstractActor implements Switchable,Repairable{
     @Override
     public void turnOff()
     {
-        if(this.state == true)
+        if(this.state == true && damage<100)
         {
             this.state = false;
             updateOff();
         }
-        else return;
+        for (EnergyConsumer device : devices)
+        {
+            device.setPowered(false);
+        }
     }
 
     @Override

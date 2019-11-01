@@ -1,5 +1,6 @@
 package sk.tuke.kpi.oop.game.tools;
 
+import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 import sk.tuke.kpi.oop.game.Reactor;
 
@@ -19,5 +20,13 @@ public class FireExtinguisher extends BreakableTool<Reactor> {
     public int getRemainingUses()
     {
         return get();
+    }
+
+    @Override
+     public void useWith(Reactor fire)
+    {
+        if(fire !=null) {
+            super.useWith(fire);
+        }
     }
 }
