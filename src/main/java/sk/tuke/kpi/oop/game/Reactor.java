@@ -75,18 +75,13 @@ public class Reactor extends AbstractActor implements Switchable,Repairable{
             if (this.temperature > 2000 && this.damage < 33 && temperature < 6000) {
                 damage = (int) Math.floor((temperature - 2000) / 40);
             }
-            if (temperature >= 6000) {
+            if (temperature >= 6000 || damage>100) {
                 damage = 100;
                 this.state = false;
                 updateAnimation();
             }
             if (temperature > 4000 && temperature < 6000) {
                 updateAnimation();
-            }
-            if (damage > 100)
-            {
-                this.damage = 100;
-                this.state = false;
             }
         }
         else return;
