@@ -7,7 +7,6 @@ public class Hammer extends BreakableTool<Reactor>{
 
     //private int pocet = 1;
 
-    private Reactor reactor;
 
     public Hammer ()
     {
@@ -28,7 +27,7 @@ public class Hammer extends BreakableTool<Reactor>{
     {
         if(reactor != null && reactor.repair() == true)
         {
-            super.useWith(this.reactor);
+            super.useWith(reactor);
         }
     }
 
