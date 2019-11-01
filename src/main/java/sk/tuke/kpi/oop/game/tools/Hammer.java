@@ -6,13 +6,13 @@ import sk.tuke.kpi.oop.game.Reactor;
 public class Hammer extends BreakableTool<Reactor>{
 
     //private int pocet = 1;
-    private Animation kladivo;
+
     private Reactor reactor;
 
     public Hammer ()
     {
         super(1);
-        //this.pocet = pocet;
+        Animation kladivo;
         kladivo = new Animation("sprites/hammer.png");
         setAnimation(kladivo);
     }
@@ -26,14 +26,10 @@ public class Hammer extends BreakableTool<Reactor>{
     @Override
     public void useWith(Reactor reactor)
     {
-        if(reactor != null)
+        if(reactor != null && reactor.repair() == true)
         {
-            if(reactor.repair() == true)
-                {
-                     super.useWith(this.reactor);
-                }
+            super.useWith(this.reactor);
         }
-        else return;
     }
 
     public int getRemainingUses()
