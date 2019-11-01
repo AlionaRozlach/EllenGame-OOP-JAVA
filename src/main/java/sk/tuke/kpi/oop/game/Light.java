@@ -57,15 +57,18 @@ public class Light extends AbstractActor implements Switchable, EnergyConsumer {
             if(this.prepinac == true)
             {
                 state = true;
+                turnOff();
                 setAnimation(light_on);
             }
             else
             {
                 state = false;
+                turnOn();
                 setAnimation(light_off);}
         }
         else {
             state = false;
+            turnOn();
             setAnimation(light_off);
         }
     }
