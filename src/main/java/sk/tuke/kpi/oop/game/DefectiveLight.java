@@ -23,6 +23,8 @@ public class DefectiveLight extends Light{
         }
     }
 
+
+
     @Override
 
     public void addedToScene( @NotNull Scene scene)

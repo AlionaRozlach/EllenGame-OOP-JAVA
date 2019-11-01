@@ -35,15 +35,15 @@ public class Light extends AbstractActor implements Switchable, EnergyConsumer {
 
     public void toggle()
     {
-            if(state==true)//this.prepinac == true
+            if(state==false)//this.prepinac == true
             {
-                state = false;
+                state = true;
                 uupdateAnimation();
             }
             else
             {
-                state = true;
-               uupdateAnimation();
+                state = false;
+                setAnimation(light_off);
             }
     }
 
@@ -82,7 +82,7 @@ public class Light extends AbstractActor implements Switchable, EnergyConsumer {
     @Override
     public void turnOn() {
         state = true;
-        if(electric == true) {
+        if(electric == true && state==true) {
             setAnimation(light_on);
         }
         else setAnimation(light_off);
