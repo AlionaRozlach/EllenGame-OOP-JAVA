@@ -24,14 +24,6 @@ public class Light extends AbstractActor implements Switchable, EnergyConsumer {
         if(electric == true ) setAnimation(light_on);
     }
 
-    public boolean isPower() {
-        if (reactor.isOn())
-        {
-            electric = true;
-            return true;
-        }
-        return false;
-    }
 
     public void toggle()
     {
