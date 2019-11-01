@@ -58,6 +58,7 @@ public class Reactor extends AbstractActor implements Switchable,Repairable{
         else if(this.temperature>=6000)
         {
             setAnimation(brokenAnimation);
+            turnOff();
         }
         else
         {
@@ -65,6 +66,20 @@ public class Reactor extends AbstractActor implements Switchable,Repairable{
         }
     }
 
+    public void controlTemp(int increment)
+    {
+        if (this.temperature > 2000 && this.damage < 33 && temperature < 6000) {
+            damage = (int) Math.floor((temperature - 2000) / 40);
+        }
+        if (temperature >= 6000 || damage>100) {
+            damage = 100;
+            this.state = false;
+            updateAnimation();
+        }
+        if (temperature > 4000 && temperature < 6000) {
+            updateAnimation();
+        }
+    }
 
     public void increaseTemperature(int increment)
     {
@@ -72,17 +87,7 @@ public class Reactor extends AbstractActor implements Switchable,Repairable{
             if (damage >= 33 && damage <= 66) temperature += 1.5 * increment;
             else if (damage > 66) temperature += 2 * increment;
             else temperature += increment;
-            if (this.temperature > 2000 && this.damage < 33 && temperature < 6000) {
-                damage = (int) Math.floor((temperature - 2000) / 40);
-            }
-            if (temperature >= 6000 || damage>100) {
-                damage = 100;
-                this.state = false;
-                updateAnimation();
-            }
-            if (temperature > 4000 && temperature < 6000) {
-                updateAnimation();
-            }
+            controlTemp(increment);
         }
         else return;
     }
@@ -106,7 +111,7 @@ public class Reactor extends AbstractActor implements Switchable,Repairable{
     {
        if(this.damage< 0 || this.damage>100) return false;
 
-        if((this.damage>0 && this.damage<100) || (this.damage<100 && this.temperature>4000))//posle ||
+        if((this.damage>0 && this.damage<100))//posle ||
         {
             if (this.damage > 50) {
                 this.damage-=50;
@@ -116,7 +121,7 @@ public class Reactor extends AbstractActor implements Switchable,Repairable{
             }
             else{
                 this.damage = 0;
-                this.temperature = this.temperature - 2000;
+                this.temperature= this.temperature -((this.damage * 40) + 2000);
                 updateAnimation();
             }
             return true;
@@ -162,6 +167,7 @@ public class Reactor extends AbstractActor implements Switchable,Repairable{
         else if(this.damage == 100)
         {
             setAnimation(brokenAnimation);
+            turnOff();
         }
     }
 

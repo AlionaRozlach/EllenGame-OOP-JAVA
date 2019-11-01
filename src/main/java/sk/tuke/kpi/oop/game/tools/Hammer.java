@@ -28,13 +28,10 @@ public class Hammer extends BreakableTool<Reactor>{
     {
         if(reactor != null)
         {
-            if(reactor.getDamage()<100 && reactor.getDamage()!=0)//
-            {
-                if(reactor.repair() == true)
+            if(reactor.repair() == true)
                 {
                      super.useWith(this.reactor);
                 }
-            }
         }
         else return;
     }
