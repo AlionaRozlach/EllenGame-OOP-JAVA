@@ -138,7 +138,7 @@ public class Reactor extends AbstractActor implements Switchable,Repairable{
     @Override
     public void turnOn()
     {
-        if(this.state == false && damage<100)//damage!= 100
+        if(damage<100)//damage!= 100
         {
             this.state = true;
 
@@ -168,7 +168,7 @@ public class Reactor extends AbstractActor implements Switchable,Repairable{
     @Override
     public void turnOff()
     {
-        if(this.state == true && damage<100)
+        if(damage<100)
         {
             this.state = false;
             updateOff();
