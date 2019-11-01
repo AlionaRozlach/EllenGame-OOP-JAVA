@@ -109,20 +109,17 @@ public class Reactor extends AbstractActor implements Switchable,Repairable{
     @Override
     public boolean repair()
     {
-       if(this.damage< 0 || this.damage>100) return false;
-
         if((this.damage>0 && this.damage<100))//posle ||
         {
             if (this.damage > 50) {
                 this.damage-=50;
-                this.temperature= this.temperature -((this.damage * 40) + 2000);
-                updateAnimation();
-
-            }
-            else{
-                this.damage = 0;
-                this.temperature= this.temperature -((this.damage * 40) + 2000);
-                updateAnimation();
+                if(this.damage <0) this.damage = 0;
+                int temp= this.temperature -((this.damage * 40) + 2000);
+                if(temp<this.temperature)
+                {
+                    this.temperature = temp;
+                    updateAnimation();
+                }
             }
             return true;
         }
