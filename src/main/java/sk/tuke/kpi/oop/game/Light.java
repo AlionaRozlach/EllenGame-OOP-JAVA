@@ -17,11 +17,7 @@ public class Light extends AbstractActor implements Switchable, EnergyConsumer {
 
         light_on = new Animation("sprites/light_on.png",16,16);
         light_off = new Animation ("sprites/light_off.png",16,16);
-        if(electric == false )
-        {
-            setAnimation(light_off);
-        }
-        if(electric == true ) setAnimation(light_on);
+        setAnimation(light_off);
     }
 
 
@@ -43,7 +39,7 @@ public class Light extends AbstractActor implements Switchable, EnergyConsumer {
             else
             {
                 state = false;
-                setAnimation(light_off);
+                uupdateAnimation();
             }
     }
 
