@@ -36,4 +36,6 @@ public class Hammer extends BreakableTool<Reactor>{
     {
         return get();
     }
+
+
 }
