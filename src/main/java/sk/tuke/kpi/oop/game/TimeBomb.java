@@ -14,16 +14,16 @@ import sk.tuke.kpi.gamelib.graphics.Animation;
 
 public class TimeBomb extends AbstractActor {
 
-    private float time_tik;
+
     private boolean state;
     private Animation bomb_activated;
-    ;
+    private float time_tik;
     private Animation explos;
 
 
     public TimeBomb(float time)
     {    Animation bomb;
-        time_tik = time;
+         time_tik = time;
          bomb = new Animation("sprites/bomb.png");
          bomb_activated = new Animation("sprites/bomb_activated.png",16,16,0.1f,Animation.PlayMode.LOOP_PINGPONG);
          explos = new Animation("sprites/small_explosion.png",16,16,0.1f,Animation.PlayMode.ONCE);
@@ -35,7 +35,7 @@ public class TimeBomb extends AbstractActor {
             setAnimation(bomb_activated);
             state = true;
            new ActionSequence<>(
-               new Wait<>(5),
+               new Wait<>(time_tik),
             new Invoke<>(this::tikTok)).scheduleFor(this);
     }
 
