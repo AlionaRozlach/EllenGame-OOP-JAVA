@@ -3,9 +3,9 @@ package sk.tuke.kpi.oop.game;
 
 //import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.Scene;
-//import sk.tuke.kpi.gamelib.actions.ActionSequence;
+import sk.tuke.kpi.gamelib.actions.ActionSequence;
 import sk.tuke.kpi.gamelib.actions.Invoke;
-//import sk.tuke.kpi.gamelib.actions.Wait;
+import sk.tuke.kpi.gamelib.actions.Wait;
 import sk.tuke.kpi.gamelib.actions.When;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 //import sk.tuke.kpi.gamelib.framework.Player;
@@ -32,14 +32,11 @@ public class TimeBomb extends AbstractActor {
 
     public void activate()
     {
-        if(state == false)
-        {
             setAnimation(bomb_activated);
             state = true;
-           // new ActionSequence<>(
-            //new Wait<>(5),
-            new Invoke<>(this::tikTok).scheduleFor(this);
-        }
+           new ActionSequence<>(
+               new Wait<>(5),
+            new Invoke<>(this::tikTok)).scheduleFor(this);
     }
 
     public void delete()
