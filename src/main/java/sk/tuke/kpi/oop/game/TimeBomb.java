@@ -1,4 +1,42 @@
 package sk.tuke.kpi.oop.game;
 
-public class TimeBomb {
+import sk.tuke.kpi.gamelib.actions.Invoke;
+import sk.tuke.kpi.gamelib.framework.AbstractActor;
+import sk.tuke.kpi.gamelib.framework.actions.Loop;
+import sk.tuke.kpi.gamelib.graphics.Animation;
+
+public class TimeBomb extends AbstractActor {
+
+    private float time_tik;
+    private boolean state;
+    private Animation bomb_activated;
+    private Animation bomb;
+    public TimeBomb(float time)
+    {
+        time_tik = time;
+         bomb = new Animation("sprites/bomb.png");
+         bomb_activated = new Animation("sprites/bomb_activated.png",16,16,0.1f,Animation.PlayMode.LOOP_PINGPONG);
+        setAnimation(bomb);
+    }
+
+    public void activate()
+    {
+        if(state == false)
+        {
+            setAnimation(bomb_activated);
+            state = true;
+            new Loop<>(new Invoke<>(this::tik_tok)).scheduleFor(this);
+        }
+    }
+
+    public void tik_tok()
+    {
+        if(this.time_tik>0)
+            this.time_tik--;
+    }
+
+    public boolean isActivated()
+    {
+        return state;
+    }
 }
