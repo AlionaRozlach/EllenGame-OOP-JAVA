@@ -11,12 +11,14 @@ public class TimeBomb extends AbstractActor {
     private boolean state;
     private Animation bomb_activated;
     private Animation bomb;
+    private Animation explos;
     public TimeBomb(float time)
     {
         time_tik = time;
          bomb = new Animation("sprites/bomb.png");
          bomb_activated = new Animation("sprites/bomb_activated.png",16,16,0.1f,Animation.PlayMode.LOOP_PINGPONG);
-        setAnimation(bomb);
+         explos = new Animation("sprites/small_explosion.png",16,16,0.1f,Animation.PlayMode.ONCE);
+         setAnimation(bomb);
     }
 
     public void activate()
@@ -26,6 +28,7 @@ public class TimeBomb extends AbstractActor {
             setAnimation(bomb_activated);
             state = true;
             new Loop<>(new Invoke<>(this::tik_tok)).scheduleFor(this);
+            setAnimation(explos);
         }
     }
 

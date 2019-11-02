@@ -7,9 +7,9 @@ public class Light extends AbstractActor implements Switchable, EnergyConsumer {
 
     private Animation light_on;
     private Animation light_off;
-    private boolean electric;
+    private boolean electric = false;
     //private boolean prepinac ;
-    private boolean state;
+    private boolean state = false;
     //rivate Reactor reactor;
 
     public Light()
@@ -52,27 +52,17 @@ public class Light extends AbstractActor implements Switchable, EnergyConsumer {
             if(this.state == true)
             {
                 state = true;
-                turnOff();
                 setAnimation(light_on);
             }
             else
             {
                 state = false;
-                turnOn();
                 setAnimation(light_off);}
         }
         else {
             state = false;
-            turnOn();
             setAnimation(light_off);
         }
-    }
-
-
-    public void updateAnimation(boolean prepinac)
-    {
-        if(prepinac == true) setAnimation(light_off);
-        else setAnimation(light_on);
     }
 
     @Override
