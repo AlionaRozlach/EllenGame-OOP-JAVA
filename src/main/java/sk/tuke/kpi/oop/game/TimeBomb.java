@@ -1,8 +1,7 @@
 package sk.tuke.kpi.oop.game;
 
-import sk.tuke.kpi.gamelib.Scene;
+
 import sk.tuke.kpi.gamelib.actions.Invoke;
-import sk.tuke.kpi.gamelib.actions.When;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.framework.Player;
 import sk.tuke.kpi.gamelib.framework.actions.Loop;
