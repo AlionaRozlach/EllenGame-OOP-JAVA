@@ -1,7 +1,10 @@
 package sk.tuke.kpi.oop.game;
 
+import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.actions.Invoke;
+import sk.tuke.kpi.gamelib.actions.When;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
+import sk.tuke.kpi.gamelib.framework.Player;
 import sk.tuke.kpi.gamelib.framework.actions.Loop;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
@@ -12,6 +15,8 @@ public class TimeBomb extends AbstractActor {
     private Animation bomb_activated;
     private Animation bomb;
     private Animation explos;
+    private Player player;
+
     public TimeBomb(float time)
     {
         time_tik = time;
@@ -28,14 +33,24 @@ public class TimeBomb extends AbstractActor {
             setAnimation(bomb_activated);
             state = true;
             new Loop<>(new Invoke<>(this::tik_tok)).scheduleFor(this);
-            setAnimation(explos);
         }
     }
+
+    public boolean akskoncila()
+    {
+        int count_cadr = explos.getFrameCount();
+        int tera_cadr = explos.getCurrentFrameIndex();
+
+        if(count_cadr == tera_cadr) return true;
+        else return false;
+    }
+
 
     public void tik_tok()
     {
         if(this.time_tik>0)
             this.time_tik--;
+        if(time_tik == 0) setAnimation(explos);
     }
 
     public boolean isActivated()
