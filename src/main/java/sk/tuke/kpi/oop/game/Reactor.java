@@ -66,16 +66,27 @@ public class Reactor extends AbstractActor implements Switchable,Repairable{
         }
     }
 
+    public void velkaTemp()
+    {
+        if (temperature >= 6000 ) {
+            damage = 100;
+            this.state = false;
+            updateAnimation();
+        }
+        if(damage>100)
+        {
+            damage = 100;
+            this.state = false;
+            updateAnimation();
+        }
+    }
+
     public void controlTemp(int increment)
     {
         if (this.temperature > 2000 && this.damage < 33 && temperature < 6000) {
             damage = (int) Math.floor((temperature - 2000) / 40);
         }
-        if (temperature >= 6000 || damage>100) {
-            damage = 100;
-            this.state = false;
-            updateAnimation();
-        }
+        velkaTemp();
         if (temperature > 4000 && temperature < 6000) {
             updateAnimation();
         }

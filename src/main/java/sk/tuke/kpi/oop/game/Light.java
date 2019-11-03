@@ -84,15 +84,7 @@ public class Light extends AbstractActor implements Switchable, EnergyConsumer {
     @Override
     public boolean isOn()
     {
-        if(electric == true)
-        {
-            if(prepinac == true)
-            {
-                return true;
-            }
-            else return false;
-        }
-        else return false;
+        return prepinac;
     }
 
     @Override
