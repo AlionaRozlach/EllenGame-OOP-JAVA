@@ -17,7 +17,6 @@ public class Take <A extends Keeper> extends AbstractAction<A> {
     public void execute(float deltaTime) {
         Actor actor=getActor();
         Scene scene = actor.getScene();
-        //Collectible wrench = getActor().;
         Backpack backpack = getActor().getBackpack();
         List<Actor> myList = scene.getActors();
 
