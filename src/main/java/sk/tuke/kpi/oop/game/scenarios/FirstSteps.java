@@ -1,7 +1,7 @@
 package sk.tuke.kpi.oop.game.scenarios;
 
 import org.jetbrains.annotations.NotNull;
-//import sk.tuke.kpi.gamelib.GameApplication;
+
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.SceneListener;
 import sk.tuke.kpi.gamelib.actions.Invoke;
