@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Backpack implements ActorContainer<Collectible>{
 
-    private ArrayList arrayList= new ArrayList();
+    private ArrayList<Collectible> arrayList= new ArrayList<Collectible>();
     private int capacita;
     private String name;
 
