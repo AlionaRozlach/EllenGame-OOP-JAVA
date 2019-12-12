@@ -18,17 +18,18 @@ public class Take <A extends Keeper> extends AbstractAction<A> {
         Actor actor=getActor();
         Scene scene = actor.getScene();
         Backpack backpack = getActor().getBackpack();
-        List<Actor> myList = scene.getActors();
 
-        for(int i = 0; i!= myList.size(); i++)
-        {
-            if(myList.get(i) instanceof Collectible)
-            {
-                if(myList.get(i).intersects(getActor()))
-                {
 
-                    backpack.add((Collectible) myList.get(i));
-                    scene.removeActor(myList.get(i));
+        if(actor!= null && scene != null && backpack!= null && backpack.getCapacity()!=backpack.getSize()) {
+            List<Actor> myList = scene.getActors();
+
+           for (int i = 0; i != myList.size(); i++) {
+                if (myList.get(i) instanceof Collectible) {
+                    if (myList.get(i).intersects(getActor())) {
+
+                        backpack.add((Collectible) myList.get(i));
+                        scene.removeActor(myList.get(i));
+                    }
                 }
             }
         }

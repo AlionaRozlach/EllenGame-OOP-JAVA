@@ -8,6 +8,7 @@ import sk.tuke.kpi.oop.game.Movable;
 
 
 
+
 public class Move<A extends Movable> implements Action<A> {
 
 
@@ -65,6 +66,8 @@ public class Move<A extends Movable> implements Action<A> {
             grac.setPosition((grac.getPosX()-grac.getSpeed()),(grac.getPosY()));
         }
 
+
+
         timik += deltaTime;
         if(timik>=duration) state = true;
         if(isDone()) grac.stoppedMoving();
@@ -81,4 +84,7 @@ public class Move<A extends Movable> implements Action<A> {
         state = true;
         grac.stoppedMoving();
     }
+
+
+
 }

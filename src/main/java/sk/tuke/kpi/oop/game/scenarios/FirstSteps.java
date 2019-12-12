@@ -1,16 +1,11 @@
 package sk.tuke.kpi.oop.game.scenarios;
 
 import org.jetbrains.annotations.NotNull;
-import sk.tuke.kpi.gamelib.GameApplication;
+//import sk.tuke.kpi.gamelib.GameApplication;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.SceneListener;
 import sk.tuke.kpi.gamelib.actions.Invoke;
 import sk.tuke.kpi.gamelib.actions.When;
-import sk.tuke.kpi.gamelib.framework.actions.AbstractAction;
-import sk.tuke.kpi.gamelib.framework.actions.Loop;
-import sk.tuke.kpi.gamelib.graphics.Color;
-import sk.tuke.kpi.gamelib.graphics.Font;
-import sk.tuke.kpi.oop.game.Keeper;
 import sk.tuke.kpi.oop.game.actions.Use;
 import sk.tuke.kpi.oop.game.characters.Ripley;
 import sk.tuke.kpi.oop.game.controllers.KeeperController;
@@ -41,30 +36,53 @@ public class FirstSteps implements SceneListener {
         scene.addActor(ammo,0,-30);
 
         Hammer hammer = new Hammer();
+        scene.addActor(hammer, 5,10);
         FireExtinguisher fire = new FireExtinguisher();
+
+        /*Hammer hammer2 = new Hammer();
+        scene.addActor(hammer2, 3,10);
+        Hammer hammer1 = new Hammer();
+        scene.addActor(hammer1, 82,10);
+        Hammer hammer3 = new Hammer();
+        scene.addActor(hammer3, 50,10);
+        Hammer hammer4 = new Hammer();
+        scene.addActor(hammer4, -30,10);
+        Hammer hammer5 = new Hammer();
+        scene.addActor(hammer5, 93,10);
+        Hammer hammer6 = new Hammer();
+        scene.addActor(hammer6, -60,10);
+        Hammer hammer7 = new Hammer();
+        scene.addActor(hammer7, -15,10);
+        Hammer hammer8 = new Hammer();
+        scene.addActor(hammer8, 0,-10);*/
+
+
+
         Wrench wrench = new Wrench();
+        scene.addActor(wrench,3,0);
 
         Backpack backpack = ripley.getBackpack();
 
-       /* new When<>(()->ammo.intersects(ripley) ,new Invoke<>(() ->new Use<>(ammo).scheduleFor(ripley)
-        )).scheduleFor(ripley);*/
+       new When<>(()->ammo.intersects(ripley) ,new Invoke<>(() ->new Use<>(ammo).scheduleFor(ripley)
+        )).scheduleFor(ripley);
 
-
+        new When<>(()->energy.intersects(ripley) ,new Invoke<>(() ->new Use<>(energy).scheduleFor(ripley)
+        )).scheduleFor(ripley);
 
         KeeperController keep = new KeeperController(ripley);
         scene.getInput().registerListener(keep);
 
         scene.getGame().getOverlay();
-        int windowHeight = scene.getGame().getWindowSetup().getHeight();
+        /*int windowHeight = scene.getGame().getWindowSetup().getHeight();
         int yTextPos = windowHeight - GameApplication.STATUS_LINE_OFFSET;
 
         new Loop<>(new Invoke<>(() -> {
             String text = "| Energy: " + ripley.getEnergy()+"| Ammo: "+ ripley.getAmmo();
             scene.getGame().getOverlay().drawText(text, 100, yTextPos, new Font(16, Color.WHITE));
         })).scheduleFor(ripley);
+*/
 
-
-        backpack.add(hammer);
+       backpack.add(hammer);
         backpack.add(fire);
         backpack.add(wrench);
         scene.getGame().pushActorContainer(ripley.getBackpack());
