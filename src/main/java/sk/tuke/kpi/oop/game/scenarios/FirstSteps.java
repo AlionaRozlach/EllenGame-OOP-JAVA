@@ -19,7 +19,7 @@ public class FirstSteps implements SceneListener {
     public void sceneInitialized(@NotNull Scene scene) {
 
         Ripley ripley = new Ripley();
-        scene.addActor(ripley,0,0);
+        scene.addActor(ripley,30,50);
 
         /*Move<Ripley> move = new Move<>(Direction.SOUTH,2);
         move.scheduleFor(ripley);*/

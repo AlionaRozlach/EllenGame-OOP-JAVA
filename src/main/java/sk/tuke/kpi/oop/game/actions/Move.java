@@ -7,8 +7,6 @@ import sk.tuke.kpi.oop.game.Movable;
 
 
 
-
-
 public class Move<A extends Movable> implements Action<A> {
 
 
@@ -81,12 +79,6 @@ public class Move<A extends Movable> implements Action<A> {
                 grac.setPosition((grac.getPosX()+grac.getSpeed()),(grac.getPosY()));
             }
         }
-
-       /* if(grac.getScene().getMap().intersectsWithWall(grac))
-        {
-            this.grac.collidedWithWall();
-            this.getActor().setPosition(grac.getPosX(), grac.getPosY());
-        }*/
 
         timik += deltaTime;
         if(timik>=duration) state = true;
