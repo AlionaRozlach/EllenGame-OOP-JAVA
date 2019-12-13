@@ -1,7 +1,7 @@
 package sk.tuke.kpi.oop.game;
 
 public enum Direction {
-    NORTH(0,1),EAST(1,0),WEST(-1,0),SOUTH(0,-1);
+    NORTH(0,1),EAST(1,0),WEST(-1,0),SOUTH(0,-1),NONE(0,0),NORTHWEST(-1,1),NORTHEAST(1,1),SOUTHEAST(1,-1),SOUTHWEST(-1,-1);
     private int dx;
     private int dy;
 
@@ -34,5 +34,10 @@ public enum Direction {
        else if(angle == 90.0) return WEST;
        else return NORTH;
     }
+
+   /* public Direction combine(Direction other)
+    {
+
+    }*/
 
 }
