@@ -12,7 +12,7 @@ public class Move<A extends Movable> implements Action<A> {
 
     private Direction direction;
     private float duration;
-    private A grac;
+    private A grac = this.getActor();
     private boolean state=false;
     private float timik=0;
 
@@ -45,7 +45,7 @@ public class Move<A extends Movable> implements Action<A> {
     @Override
     public void execute(float deltaTime) {
         if(grac!=null) {
-            if (isDone() == true) {
+            if (isDone() == true ) {
                 grac.startedMoving(direction);
                 state=false;
             }
