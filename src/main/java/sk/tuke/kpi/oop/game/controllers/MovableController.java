@@ -25,7 +25,7 @@ public class MovableController implements KeyboardListener {
         if(keyDirectionMap.containsKey(key))
         {
             Direction direct = keyDirectionMap.get(key);
-            move = new Move<>(direct,100);
+            move = new Move<>(direct.combine(keyDirectionMap.get(key)),100);
             move.scheduleFor(a);
         }
     }
