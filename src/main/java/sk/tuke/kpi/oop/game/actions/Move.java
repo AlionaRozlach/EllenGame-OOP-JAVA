@@ -53,17 +53,33 @@ public class Move<A extends Movable> implements Action<A> {
         if(direction == Direction.NORTH)
         {
             grac.setPosition((grac.getPosX()),(grac.getPosY()+grac.getSpeed()));
+            if(grac.getScene().getMap().intersectsWithWall(grac))
+            {
+                grac.setPosition((grac.getPosX()),(grac.getPosY()-grac.getSpeed()));
+            }
         }
         else if(direction == Direction.SOUTH)
         {
             grac.setPosition((grac.getPosX()),(grac.getPosY()-grac.getSpeed()));
+            if(grac.getScene().getMap().intersectsWithWall(grac))
+            {
+                grac.setPosition((grac.getPosX()),(grac.getPosY()+grac.getSpeed()));
+            }
         }
         else if(direction == Direction.EAST)
         {
             grac.setPosition((grac.getPosX()+grac.getSpeed()),(grac.getPosY()));
+            if(grac.getScene().getMap().intersectsWithWall(grac))
+            {
+                grac.setPosition((grac.getPosX()-grac.getSpeed()),(grac.getPosY()));
+            }
         }
         else{
             grac.setPosition((grac.getPosX()-grac.getSpeed()),(grac.getPosY()));
+            if(grac.getScene().getMap().intersectsWithWall(grac))
+            {
+                grac.setPosition((grac.getPosX()+grac.getSpeed()),(grac.getPosY()));
+            }
         }
 
        /* if(grac.getScene().getMap().intersectsWithWall(grac))

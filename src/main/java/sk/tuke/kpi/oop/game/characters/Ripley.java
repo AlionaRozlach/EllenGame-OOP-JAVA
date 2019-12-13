@@ -16,7 +16,7 @@ public class Ripley extends AbstractActor implements Movable, Keeper {
     private int energy=50;
     private int naboj = 10;
     private Backpack backpack = new Backpack("Ripley's backpack",10);
-   private Scene scene = getScene();
+
 
 
     public Ripley()

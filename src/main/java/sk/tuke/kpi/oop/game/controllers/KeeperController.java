@@ -30,7 +30,7 @@ public class KeeperController implements KeyboardListener {
     }
 
     @Override
-    public void keyPressed(Input.@NotNull Key key) {
+    public void keyPressed(@NotNull Input.Key key) {
             if(keyDirectionMap.containsKey(key))
             {
                 keyDirectionMap.get(key).scheduleFor(a);
