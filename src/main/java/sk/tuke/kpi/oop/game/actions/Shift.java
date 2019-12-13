@@ -12,13 +12,15 @@ public class Shift <B extends Keeper> extends AbstractAction<B> {
 
     @Override
     public void execute(float deltaTime) {
-        Actor actor= getActor();
-        Backpack backpack = getActor().getBackpack();
-        Scene scene = actor.getScene();
-        if(actor!=null && backpack != null && scene != null ) {
-            backpack.shift();
-
-        } setDone(true);
+       if(getActor()!=null) {
+           Actor actor = getActor();
+           Backpack backpack = getActor().getBackpack();
+           Scene scene = actor.getScene();
+           if (actor != null && backpack != null && scene != null) {
+               backpack.shift();
+           }
+       }
+       setDone(true);
     }
 
 
