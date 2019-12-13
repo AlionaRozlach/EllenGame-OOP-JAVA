@@ -44,51 +44,68 @@ public class Move<A extends Movable> implements Action<A> {
 
     @Override
     public void execute(float deltaTime) {
-        if(isDone()==false)
-        {
-            grac.startedMoving(direction);
-        }
-        if(direction == Direction.NORTH)
-        {
-            grac.setPosition((grac.getPosX()),(grac.getPosY()+grac.getSpeed()));
-            if(grac.getScene().getMap().intersectsWithWall(grac))
-            {
-                grac.setPosition((grac.getPosX()),(grac.getPosY()-grac.getSpeed()));
+        if(grac!=null) {
+            if (isDone() == true) {
+                grac.startedMoving(direction);
+                state=false;
             }
+            if (direction == Direction.NORTH) {
+                directNorth();
+            } else if (direction == Direction.SOUTH) {
+                directSouth();
+            } else if (direction == Direction.EAST) {
+                directEast();
+            } else {
+                directWest();
+            }
+
+            timik += deltaTime;
+            if (timik >= duration) state = true;
+            if (isDone()) grac.stoppedMoving();
         }
-        else if(direction == Direction.SOUTH)
+    }
+
+    private void directNorth()
+    {
+        grac.setPosition((grac.getPosX()),(grac.getPosY()+grac.getSpeed()));
+        if(grac.getScene().getMap().intersectsWithWall(grac))
         {
             grac.setPosition((grac.getPosX()),(grac.getPosY()-grac.getSpeed()));
-            if(grac.getScene().getMap().intersectsWithWall(grac))
-            {
-                grac.setPosition((grac.getPosX()),(grac.getPosY()+grac.getSpeed()));
-            }
         }
-        else if(direction == Direction.EAST)
+    }
+
+    private void directSouth()
+    {
+        grac.setPosition((grac.getPosX()),(grac.getPosY()-grac.getSpeed()));
+        if(grac.getScene().getMap().intersectsWithWall(grac))
+        {
+            grac.setPosition((grac.getPosX()),(grac.getPosY()+grac.getSpeed()));
+        }
+    }
+
+    private void directEast()
+    {
+        grac.setPosition((grac.getPosX()+grac.getSpeed()),(grac.getPosY()));
+        if(grac.getScene().getMap().intersectsWithWall(grac))
+        {
+            grac.setPosition((grac.getPosX()-grac.getSpeed()),(grac.getPosY()));
+        }
+    }
+
+    private void directWest()
+    {
+        grac.setPosition((grac.getPosX()-grac.getSpeed()),(grac.getPosY()));
+        if(grac.getScene().getMap().intersectsWithWall(grac))
         {
             grac.setPosition((grac.getPosX()+grac.getSpeed()),(grac.getPosY()));
-            if(grac.getScene().getMap().intersectsWithWall(grac))
-            {
-                grac.setPosition((grac.getPosX()-grac.getSpeed()),(grac.getPosY()));
-            }
         }
-        else{
-            grac.setPosition((grac.getPosX()-grac.getSpeed()),(grac.getPosY()));
-            if(grac.getScene().getMap().intersectsWithWall(grac))
-            {
-                grac.setPosition((grac.getPosX()+grac.getSpeed()),(grac.getPosY()));
-            }
-        }
-
-        timik += deltaTime;
-        if(timik>=duration) state = true;
-        if(isDone()) grac.stoppedMoving();
     }
 
     @Override
     public void reset() {
         direction=Direction.NORTH;
         grac.stoppedMoving();
+        state=false;
     }
 
     public void stop()
