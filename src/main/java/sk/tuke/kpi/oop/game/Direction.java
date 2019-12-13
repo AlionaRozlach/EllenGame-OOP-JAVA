@@ -5,11 +5,14 @@ public enum Direction {
     private int dx;
     private int dy;
 
-    Direction(int dx,int dy)
+
+   Direction(int dx, int dy)
     {
         this.dx = dx;
         this.dy = dy;
     }
+
+
 
     public int getDx() {
         return dx;
@@ -35,9 +38,27 @@ public enum Direction {
        else return NORTH;
     }
 
-   /* public Direction combine(Direction other)
+    public Direction combine(Direction other)
     {
+        int x = dx+other.dx;
+        int y = dy+other.dy;
 
-    }*/
+        if(x>1) x=1;
+        if(x<-1) x=-1;
+
+        if(y>1) y=1;
+        if(y<-1) y=-1;
+
+        if(x==0 && y==1) return NORTH;
+        else if(x==1 && y==0) return EAST;
+        else if(x==-1 && y==0) return WEST;
+        else if(x==0 && y==-1) return SOUTH;
+        else if(x==-1 && y==1) return NORTHWEST;
+        else if(x==1 && y==1) return NORTHEAST;
+        else if(x==1 && y==-1) return SOUTHEAST;
+        else if(x==-1 && y==-1) return SOUTHWEST;
+
+        else return NONE;
+    }
 
 }
