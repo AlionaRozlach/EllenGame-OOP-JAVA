@@ -11,17 +11,18 @@ public class Drop <A extends Keeper> extends AbstractAction<A> {
     private Scene scene ;
     @Override
     public void execute(float deltaTime) {
-
+        if(getActor()!=null)
+        {
         Actor actor = getActor();
         scene = actor.getScene();
         backpack = getActor().getBackpack();
         if(actor!=null && scene!= null && backpack!=null) {
             int x = actor.getPosX();
             int y = actor.getPosY();
-
             scene.addActor(backpack.peek(), x, y);
             backpack.remove(backpack.peek());
-            setDone(true);
         }
+
+        }setDone(true);
     }
 }
