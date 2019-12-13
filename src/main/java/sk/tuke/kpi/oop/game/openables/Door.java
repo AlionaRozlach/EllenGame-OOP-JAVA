@@ -3,6 +3,7 @@ package sk.tuke.kpi.oop.game.openables;
 import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
+import sk.tuke.kpi.gamelib.map.MapTile;
 import sk.tuke.kpi.oop.game.items.Usable;
 
 public class Door extends AbstractActor implements Openable, Usable<Actor> {
@@ -30,6 +31,8 @@ public class Door extends AbstractActor implements Openable, Usable<Actor> {
             state = true;
             door_open.play();
         }
+        getScene().getMap().getTile(this.getPosX()/16,this.getPosY()/16).setType(MapTile.Type.CLEAR);
+        getScene().getMap().getTile(this.getPosX()/16,this.getPosY()/16+1).setType(MapTile.Type.CLEAR);
     }
 
     @Override
@@ -40,6 +43,8 @@ public class Door extends AbstractActor implements Openable, Usable<Actor> {
             state=false;
             door_close.stop();
         }
+        getScene().getMap().getTile(this.getPosX()/16,this.getPosY()/16).setType(MapTile.Type.WALL);
+        getScene().getMap().getTile(this.getPosX()/16,this.getPosY()/16+1).setType(MapTile.Type.WALL);
     }
 
     @Override
