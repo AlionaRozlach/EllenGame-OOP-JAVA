@@ -8,6 +8,7 @@ public enum Direction {
     private int y;
 
 
+
     Direction(int dx, int dy) {
         this.dx = dx;
         this.dy = dy;
@@ -23,19 +24,36 @@ public enum Direction {
     }
 
     public float getAngle() {
+       return  angleget();
+    }
+
+    public float angleget()
+    {
         if (dx == 0 && dy == 1) return 0;
         else if (dx == -1 && dy == 0) return 90;
         else if (dx == 0 && dy == -1) return 180;
-        else return 270;
+        else if(dx==1 && dy==0) return 270;
+        else if(dx==-1 && dy==1) return 45;
+        else if(dx==1 && dy==1) return 315;
+        else if(dx==1 && dy==-1) return 225;
+        else return 135;
     }
 
     public static Direction fromAngle(float angle) {
-        if (angle == 180.0) return SOUTH;
-        else if (angle == 270.0) return EAST;
-        else if (angle == 90.0) return WEST;
-        else return NORTH;
+      return Anglefrom(angle);
     }
 
+    public static Direction Anglefrom(float an)
+    {
+        if (an == 180.0) return SOUTH;
+        else if (an == 270.0) return EAST;
+        else if (an == 90.0) return WEST;
+        else if(an == 0.0) return NORTH;
+        else if(an == 315.0) return NORTHEAST;
+        else if(an == 45.0) return NORTHWEST;
+        else if(an ==225.0) return SOUTHEAST;
+        else return SOUTHWEST;
+    }
     public Direction combine(Direction other) {
          x = dx + other.dx;
          y = dy + other.dy;
