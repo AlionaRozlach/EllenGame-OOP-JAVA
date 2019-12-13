@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Backpack implements ActorContainer<Collectible>{
 
-    private ArrayList<Collectible> arrayList= new ArrayList<>();
+    private ArrayList<Collectible> arrayList;
     private int capacita;
     private String name;
 
@@ -19,6 +19,7 @@ public class Backpack implements ActorContainer<Collectible>{
     {
         this.capacita = capacity;
         this.name = name;
+        arrayList = new ArrayList<>();
     }
 
     @Override
