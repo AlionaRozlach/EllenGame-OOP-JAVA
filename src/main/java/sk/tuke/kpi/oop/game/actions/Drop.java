@@ -11,7 +11,7 @@ public class Drop <A extends Keeper> extends AbstractAction<A> {
     private Scene scene ;
     @Override
     public void execute(float deltaTime) {
-        if(getActor()!=null)
+        if(getActor()!=null && getActor().getBackpack()!=null && getActor().getScene()!=null)
         {
         Actor actor = getActor();
         scene = actor.getScene();
