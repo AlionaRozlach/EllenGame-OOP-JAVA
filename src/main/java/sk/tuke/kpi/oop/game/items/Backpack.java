@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Backpack implements ActorContainer<Collectible>{
 
-    private ArrayList<Collectible> arrayList= new ArrayList<Collectible>();
+    private ArrayList<Collectible> arrayList= new ArrayList<>();
     private int capacita;
     private String name;
 
@@ -23,7 +23,7 @@ public class Backpack implements ActorContainer<Collectible>{
 
     @Override
     public @NotNull List<Collectible> getContent() {
-        return arrayList;
+        return List.copyOf(arrayList);
     }
 
     @Override
@@ -63,9 +63,9 @@ public class Backpack implements ActorContainer<Collectible>{
         if (getSize()>0) {
         int size = getSize();
 
-            Collectible collectible = (Collectible) arrayList.get(size - 1);
-            return collectible;
+            return (Collectible) arrayList.get(size - 1);
         }
+
         return null;
     }
 

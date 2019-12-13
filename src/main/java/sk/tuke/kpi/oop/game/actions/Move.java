@@ -67,7 +67,6 @@ public class Move<A extends Movable> implements Action<A> {
         }
 
 
-
         timik += deltaTime;
         if(timik>=duration) state = true;
         if(isDone()) grac.stoppedMoving();

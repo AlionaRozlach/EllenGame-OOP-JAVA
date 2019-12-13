@@ -26,4 +26,17 @@ public enum Direction {
         else if(dx == 0 && dy == -1) return 180;
         else return 270;
     }
+
+    public Direction fromAngle(float angle)
+    {
+        if(angle == 180.0) return SOUTH;
+        else if(angle == 270.0) return EAST;
+       else if(angle == 90.0) return WEST;
+       else return NORTH;
+    }
+
+    /*public Direction combine(Direction direct)
+    {
+
+    }*/
 }
