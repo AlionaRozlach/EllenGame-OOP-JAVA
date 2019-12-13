@@ -110,8 +110,10 @@ public class Move<A extends Movable> implements Action<A> {
 
     public void stop()
     {
-        state = true;
-        grac.stoppedMoving();
+        if(grac!=null) {
+            state = true;
+            grac.stoppedMoving();
+        }
     }
 
 

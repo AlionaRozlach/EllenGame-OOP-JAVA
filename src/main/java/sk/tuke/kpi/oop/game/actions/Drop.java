@@ -10,12 +10,12 @@ public class Drop <A extends Keeper> extends AbstractAction<A> {
 
     @Override
     public void execute(float deltaTime) {
-        if(getActor()!=null && getActor().getBackpack()!=null && getActor().getScene()!=null)
+        if(getActor()!=null && getActor().getBackpack()!=null && getActor().getScene()!=null && getActor().getBackpack().peek()!=null)
         {
         Actor actor = getActor();
         Scene scene = actor.getScene();
         Backpack backpack = getActor().getBackpack();
-        if(actor!=null && scene!= null && backpack!=null) {
+        if(actor!=null && scene!= null && backpack.peek()!=null && backpack!=null) {
             int x = actor.getPosX();
             int y = actor.getPosY();
             scene.addActor(backpack.peek(), x, y);
