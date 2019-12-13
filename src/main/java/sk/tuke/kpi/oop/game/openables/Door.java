@@ -7,12 +7,18 @@ import sk.tuke.kpi.oop.game.items.Usable;
 
 public class Door extends AbstractActor implements Openable, Usable<Actor> {
 
-    private Animation door;
+    private Animation door_close;
+    private Animation door_open;
+    private boolean state;
 
   public Door()
   {
-      door = new Animation("sprites/vdoor.png ",16,32,01f);
-      setAnimation(door);
+      door_close = new Animation("sprites/vdoor.png ",16,32,01f,Animation.PlayMode.ONCE_REVERSED);
+      door_close.stop();
+      setAnimation(door_close);
+
+      door_open = new Animation("sprites/vdoor.png",16,32,01.f,Animation.PlayMode.ONCE);
+
   }
 
     @Override
