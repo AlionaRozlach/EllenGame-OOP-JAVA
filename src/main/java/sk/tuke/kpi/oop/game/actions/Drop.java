@@ -7,15 +7,14 @@ import sk.tuke.kpi.oop.game.Keeper;
 import sk.tuke.kpi.oop.game.items.Backpack;
 
 public class Drop <A extends Keeper> extends AbstractAction<A> {
-    private Backpack backpack;
-    private Scene scene ;
+
     @Override
     public void execute(float deltaTime) {
         if(getActor()!=null && getActor().getBackpack()!=null && getActor().getScene()!=null)
         {
         Actor actor = getActor();
-        scene = actor.getScene();
-        backpack = getActor().getBackpack();
+        Scene scene = actor.getScene();
+        Backpack backpack = getActor().getBackpack();
         if(actor!=null && scene!= null && backpack!=null) {
             int x = actor.getPosX();
             int y = actor.getPosY();
