@@ -10,6 +10,9 @@ import sk.tuke.kpi.oop.game.actions.Drop;
 
 import sk.tuke.kpi.oop.game.actions.Shift;
 import sk.tuke.kpi.oop.game.actions.Take;
+import sk.tuke.kpi.oop.game.actions.Use;
+import sk.tuke.kpi.oop.game.items.Collectible;
+import sk.tuke.kpi.oop.game.items.Usable;
 
 import java.util.Map;
 
@@ -23,17 +26,30 @@ public class KeeperController implements KeyboardListener {
 
 
 
-    private Keeper a;
+    private Keeper actor;
     public KeeperController(Keeper a)
     {
-        this.a = a;
+        this.actor = a;
     }
 
     @Override
     public void keyPressed(@NotNull Input.Key key) {
+            if(key == Input.Key.B)
+            {
+                Collectible use = actor.getBackpack().peek();
+                if(use instanceof Usable)
+                {
+                    new Use<>((Usable<?>)use).scheduleForIntersectingWith(actor);
+                    actor.getBackpack().remove(use);
+                }
+            }
+            if(key== Input.Key.U)
+            {
+                //if(actor.intersects())
+            }
             if(keyDirectionMap.containsKey(key))
             {
-                keyDirectionMap.get(key).scheduleFor(a);
+                keyDirectionMap.get(key).scheduleFor(actor);
             }
 
     }
