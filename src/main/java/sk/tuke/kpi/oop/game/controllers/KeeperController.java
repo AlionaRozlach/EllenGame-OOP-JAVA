@@ -1,6 +1,7 @@
 package sk.tuke.kpi.oop.game.controllers;
 
 import org.jetbrains.annotations.NotNull;
+import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.Input;
 import sk.tuke.kpi.gamelib.KeyboardListener;
 import sk.tuke.kpi.gamelib.framework.actions.AbstractAction;
@@ -14,7 +15,9 @@ import sk.tuke.kpi.oop.game.actions.Use;
 import sk.tuke.kpi.oop.game.items.Collectible;
 import sk.tuke.kpi.oop.game.items.Usable;
 
+import java.util.ArrayList;
 import java.util.Map;
+import java.util.Objects;
 
 public class KeeperController implements KeyboardListener {
 
@@ -45,7 +48,15 @@ public class KeeperController implements KeyboardListener {
             }
             if(key== Input.Key.U)
             {
-                //if(actor.intersects())
+                ArrayList<Actor> actors = (ArrayList<Actor>) Objects.requireNonNull(actor.getScene()).getActors();
+                for(int i =0;i<actors.size();i++)
+                {
+                    if(actor.intersects(actors.get(i)) && actors.get(i) instanceof Usable<?>)
+                    {
+                        new Use<>((Usable<?>)actors.get(i)).scheduleForIntersectingWith(actor);
+                        actors.get(i).getScene().removeActor(actors.get(i));
+                    }
+                }
             }
             if(keyDirectionMap.containsKey(key))
             {
