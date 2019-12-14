@@ -8,6 +8,7 @@ public class AccessCard extends AbstractActor implements Collectible, Usable<Loc
 
    public AccessCard()
    {
+      // super("access card");
        Animation key = new Animation("sprites/key.png",16,16);
        setAnimation(key);
    }
