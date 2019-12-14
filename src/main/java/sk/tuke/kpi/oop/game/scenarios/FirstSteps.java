@@ -74,7 +74,7 @@ public class FirstSteps implements SceneListener {
 
         scene.getGame().getOverlay();
 
-       backpack.add(hammer);
+      // backpack.add(hammer);
         backpack.add(fire);
         backpack.add(wrench);
         scene.getGame().pushActorContainer(ripley.getBackpack());
