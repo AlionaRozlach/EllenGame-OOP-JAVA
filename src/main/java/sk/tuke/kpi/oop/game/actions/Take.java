@@ -20,12 +20,10 @@ public class Take <A extends Keeper> extends AbstractAction<A> {
         if(actor!=null) {
             Scene scene = actor.getScene();
             Backpack backpack = getActor().getBackpack();
-            if(backpack.getSize()==backpack.getCapacity()) return;
             List<Actor> myList = scene.getActors();
                 for (int i = 0; i != myList.size(); i++) {
-                    if ((myList.get(i) instanceof Collectible) &&(myList.get(i).intersects(getActor()))) {
-                           vynimka(backpack,myList,i);
-                            scene.removeActor(myList.get(i));
+                    if ((myList.get(i) instanceof Collectible) &&(myList.get(i).intersects(getActor())) && (backpack.getSize()!=backpack.getCapacity())) {
+                           vynimka(backpack,myList,i,scene);
                             break;
                     }
                 }
@@ -35,10 +33,11 @@ public class Take <A extends Keeper> extends AbstractAction<A> {
         //vynimka
     }
 
-    public void vynimka(Backpack backpack,List<Actor> myList,int i)
+    public void vynimka(Backpack backpack,List<Actor> myList,int i,Scene scene)
     {
         try {
             backpack.add((Collectible) myList.get(i));
+            scene.removeActor(myList.get(i));
         } catch (Exception e) {
             int windowHeight = getActor().getScene().getGame().getWindowSetup().getHeight();
             int yTextPos = windowHeight - GameApplication.STATUS_LINE_OFFSET;
