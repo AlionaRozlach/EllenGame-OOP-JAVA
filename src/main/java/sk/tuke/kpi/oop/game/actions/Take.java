@@ -12,7 +12,7 @@ import sk.tuke.kpi.oop.game.items.Collectible;
 
 import java.util.List;
 
-public class Take <A extends Keeper> extends AbstractAction<A> {
+public class Take <A extends Keeper> extends AbstractAction<Keeper> {
 
     @Override
     public void execute(float deltaTime) {
@@ -20,26 +20,13 @@ public class Take <A extends Keeper> extends AbstractAction<A> {
         if(actor!=null) {
             Scene scene = actor.getScene();
             Backpack backpack = getActor().getBackpack();
-
-
             if ( scene != null && backpack != null && backpack.getCapacity() != backpack.getSize()) {
                 List<Actor> myList = scene.getActors();
-
                 for (int i = 0; i != myList.size(); i++) {
-                    if (myList.get(i) instanceof Collectible) {
-                        if (myList.get(i).intersects(getActor())) {
-                           /* try {
-                                backpack.add((Collectible) myList.get(i));
-                            } catch (Exception e) {
-                                int windowHeight = getActor().getScene().getGame().getWindowSetup().getHeight();
-                                int yTextPos = windowHeight - GameApplication.STATUS_LINE_OFFSET;
-                                getActor().getScene().getGame().getOverlay().drawText(e.getMessage(), 0, yTextPos - 30).showFor(2);
-                                return;
-                            }*/
+                    if ((myList.get(i) instanceof Collectible) &&(myList.get(i).intersects(getActor()))) {
                            vynimka(backpack,myList,i);
                             scene.removeActor(myList.get(i));
                             break;
-                        }
                     }
                 }
             }
