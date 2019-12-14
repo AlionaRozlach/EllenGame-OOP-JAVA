@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import sk.tuke.kpi.gamelib.*;
 import sk.tuke.kpi.gamelib.framework.Scenario;
 import sk.tuke.kpi.oop.game.characters.Ripley;
+import sk.tuke.kpi.oop.game.scenarios.EscapeRoom;
 import sk.tuke.kpi.oop.game.scenarios.FirstSteps;
 import sk.tuke.kpi.oop.game.scenarios.MissionImpossible;
 
@@ -13,7 +14,7 @@ public class Main {
 
       WindowSetup windowSetup = new WindowSetup("Project Ellen", 800, 600);
         Game game = new GameApplication(windowSetup);
-        Scene scene = new World("world","maps/mission-impossible.tmx",new MissionImpossible.Factory());
+        Scene scene = new World("world","maps/escape-room.tmx",new EscapeRoom.Factory());
         game.addScene(scene);
 
 
@@ -24,6 +25,8 @@ public class Main {
         MissionImpossible miss = new MissionImpossible();
         scene.addListener(miss);
 
+        EscapeRoom esc = new EscapeRoom();
+        scene.addListener(esc);
 
 
 
