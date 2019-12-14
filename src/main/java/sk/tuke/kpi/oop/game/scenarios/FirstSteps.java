@@ -73,14 +73,6 @@ public class FirstSteps implements SceneListener {
         scene.getInput().registerListener(keep);
 
         scene.getGame().getOverlay();
-        /*int windowHeight = scene.getGame().getWindowSetup().getHeight();
-        int yTextPos = windowHeight - GameApplication.STATUS_LINE_OFFSET;
-
-        new Loop<>(new Invoke<>(() -> {
-            String text = "| Energy: " + ripley.getEnergy()+"| Ammo: "+ ripley.getAmmo();
-            scene.getGame().getOverlay().drawText(text, 100, yTextPos, new Font(16, Color.WHITE));
-        })).scheduleFor(ripley);
-*/
 
        backpack.add(hammer);
         backpack.add(fire);

@@ -17,7 +17,7 @@ public class Main {
         game.addScene(scene);
 
 
-        FirstSteps scenario = new FirstSteps();
+       FirstSteps scenario = new FirstSteps();
         scene.addListener(scenario);
 
 

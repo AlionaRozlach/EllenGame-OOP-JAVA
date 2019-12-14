@@ -7,7 +7,9 @@ import sk.tuke.kpi.oop.game.Direction;
 import sk.tuke.kpi.oop.game.Movable;
 import sk.tuke.kpi.oop.game.actions.Move;
 
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class MovableController implements KeyboardListener {
 
@@ -15,6 +17,7 @@ public class MovableController implements KeyboardListener {
         Map.entry(Input.Key.RIGHT, Direction.EAST),Map.entry(Input.Key.DOWN, Direction.SOUTH),Map.entry(Input.Key.LEFT, Direction.WEST));
     private Move<Movable> move;
     private Movable a;
+    private Set<Direction> directik = new HashSet<>();
     public MovableController(Movable a)
     {
         this.a = a;
@@ -25,8 +28,23 @@ public class MovableController implements KeyboardListener {
         if(keyDirectionMap.containsKey(key))
         {
             Direction direct = keyDirectionMap.get(key);
-            move = new Move<>(direct.combine(keyDirectionMap.get(key)),100);
-            move.scheduleFor(a);
+
+            if(this.directik.isEmpty() != true)
+            {
+              Direction[] di = new Direction[this.directik.size()];
+              Direction dir = di[0];
+              for(int i=0;i<this.directik.size();i++)
+              {
+                  dir = dir.combine(di[i]);
+              }
+              move = new Move<>(dir,100);
+              move.scheduleFor(a);
+            }
+            else
+            {
+                move = new Move<>(direct,100);
+                move.scheduleFor(a);
+            }
         }
     }
 
@@ -34,7 +52,25 @@ public class MovableController implements KeyboardListener {
     public void keyReleased(@NotNull Input.Key key) {
         if(keyDirectionMap.containsKey(key))
         {
-            move.stop();
+            if(this.directik.isEmpty() != true)
+            {
+                Direction[] di = new Direction[this.directik.size()];
+                Direction dir = di[0];
+                for(int i=0;i<this.directik.size();i++)
+                {
+                    dir = dir.combine(di[i]);
+                }
+                move.stop();
+                move = new Move<>(dir,100);
+                if(a.getScene()!=null)
+                {
+                    move.scheduleFor(a);
+                }
+
+            }
+            else {
+                move.stop();
+            }
         }
     }
 }
