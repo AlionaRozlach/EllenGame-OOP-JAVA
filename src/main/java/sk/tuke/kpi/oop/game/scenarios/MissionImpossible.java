@@ -6,10 +6,12 @@ import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.ActorFactory;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.SceneListener;
+import sk.tuke.kpi.oop.game.Locker;
+import sk.tuke.kpi.oop.game.Ventilator;
 import sk.tuke.kpi.oop.game.characters.Ripley;
 import sk.tuke.kpi.oop.game.items.AccessCard;
 import sk.tuke.kpi.oop.game.items.Energy;
-import sk.tuke.kpi.oop.game.openables.Door;
+
 import sk.tuke.kpi.oop.game.openables.LockedDoor;
 
 public class MissionImpossible implements SceneListener {
@@ -32,6 +34,8 @@ public class MissionImpossible implements SceneListener {
                 else if(name == "energy") return new Energy();
                 else if(name == "door") return new LockedDoor();
                 else if(name == "access card") return new AccessCard();
+                else if(name == "ventilator") return new Ventilator();
+                else if(name == "locker") return new Locker();
                 else return null;
             }
             else return null;
