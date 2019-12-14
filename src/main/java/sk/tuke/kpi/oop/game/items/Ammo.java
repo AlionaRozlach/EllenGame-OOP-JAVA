@@ -34,4 +34,7 @@ public class Ammo  extends AbstractActor implements Usable<Ripley> {
             }
         }
     }
+    public Class<Ripley> getUsingActorClass() {
+        return Ripley.class;
+    }
 }

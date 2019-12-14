@@ -5,7 +5,7 @@ import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 
 
-public class BreakableTool< Acter extends Actor> extends AbstractActor implements Usable<Acter>{
+public abstract class BreakableTool< Acter extends Actor> extends AbstractActor implements Usable<Acter>{
 
     private int remainingUses = 10;
 
@@ -35,5 +35,7 @@ public class BreakableTool< Acter extends Actor> extends AbstractActor implement
     {
         return get();
     }
+
+
 
 }

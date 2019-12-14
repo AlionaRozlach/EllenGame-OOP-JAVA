@@ -36,5 +36,7 @@ public class Hammer extends BreakableTool<Reactor> implements Collectible{
         return get();
     }
 
-
+    public Class<Reactor> getUsingActorClass() {
+        return Reactor.class;
+    }
 }
