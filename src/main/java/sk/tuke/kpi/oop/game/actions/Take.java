@@ -27,6 +27,11 @@ public class Take <A extends Keeper> extends AbstractAction<A> {
                             scene.removeActor(myList.get(i));
                             break;
                     }
+                    else if((myList.get(i) instanceof Collectible) && (myList.get(i).intersects(getActor())) && (backpack.getCapacity()==backpack.getSize()))
+                    {
+                        vynimka(backpack,myList,i);
+                        break;
+                    }
                 }
         }
         setDone(true);
