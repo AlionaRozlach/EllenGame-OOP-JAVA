@@ -59,8 +59,8 @@ public class Move<A extends Movable> implements Action<A> {
                 directWest();
             }
 
-            timik += deltaTime;
-            if (timik >= duration) state = true;
+            timik -= deltaTime;
+            if (timik <=0) state = true;
             if (isDone()) grac.stoppedMoving();
         }
     }
