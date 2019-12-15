@@ -23,4 +23,15 @@ public abstract class Firearm {
             min_ammo=max_ammo;
         }
     }
+
+
+    protected abstract Fireable createBullet();
+
+    public Fireable fire(){
+        if (getAmmo() > 0){
+            min_ammo --;
+            return new Bullet();
+        }
+        return null;
+    }
 }
