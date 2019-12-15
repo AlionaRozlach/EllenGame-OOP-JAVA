@@ -4,10 +4,15 @@ public abstract class Firearm {
     private int min_ammo;
     private int max_ammo;
 
-    public Firearm(int min,int max)
+    public Firearm(int min, int max) {
+        min_ammo = min;
+        max_ammo = max;
+    }
+
+    public Firearm(int num)
     {
-        min_ammo=min;
-        max_ammo=max;
+        min_ammo=num;
+        max_ammo=num;
     }
 
     public int getAmmo()
