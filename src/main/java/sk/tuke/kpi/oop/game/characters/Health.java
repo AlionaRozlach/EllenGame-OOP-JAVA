@@ -73,8 +73,6 @@ public class Health {
         {
             sendToObservers();
         }
-
-
     }
 
     public void exhaust()

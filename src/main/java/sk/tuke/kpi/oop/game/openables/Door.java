@@ -16,17 +16,34 @@ public class Door extends AbstractActor implements Openable, Usable<Actor> {
     public static final Topic<Door> DOOR_OPENED = Topic.create("door opened", Door.class);
     public static final Topic<Door> DOOR_CLOSED = Topic.create("door closed", Door.class);
 
-  public Door()
-  {
+    public enum Orientation {
+        HORIZONTAL, VERTICAL
+    }
+  public Door(Orientation orientation) {
       //super("door");
-      door_close = new Animation("sprites/vdoor.png ",16,32,0.1f,Animation.PlayMode.ONCE_REVERSED);
+      if (orientation == Orientation.VERTICAL) {
+          door_close = new Animation("sprites/vdoor.png ", 16, 32, 0.1f, Animation.PlayMode.ONCE_REVERSED);
+      } else {
+          door_open = new Animation("sprites/hdoor.png", 32, 16, 0.1f, Animation.PlayMode.ONCE);
+      }
       door_close.stop();
       state = false;
       setAnimation(door_close);
-
-      door_open = new Animation("sprites/vdoor.png",16,32,0.1f,Animation.PlayMode.ONCE);
-
   }
+
+    public Door(String name, Orientation orientation)
+    {
+        super(name);
+        if (orientation == Orientation.VERTICAL) {
+            door_close = new Animation("sprites/vdoor.png ", 16, 32, 0.1f, Animation.PlayMode.ONCE_REVERSED);
+        } else {
+            door_open = new Animation("sprites/hdoor.png", 32, 16, 0.1f, Animation.PlayMode.ONCE);
+        }
+        door_close.stop();
+        state = false;
+        setAnimation(door_close);
+    }
+
 
     @Override
     public void open() {
