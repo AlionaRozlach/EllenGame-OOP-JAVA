@@ -12,6 +12,7 @@ import sk.tuke.kpi.oop.game.characters.Ripley;
 import sk.tuke.kpi.oop.game.items.AccessCard;
 import sk.tuke.kpi.oop.game.items.Energy;
 
+import sk.tuke.kpi.oop.game.openables.Door;
 import sk.tuke.kpi.oop.game.openables.LockedDoor;
 
 public class MissionImpossible implements SceneListener {
