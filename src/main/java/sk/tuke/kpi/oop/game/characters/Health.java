@@ -1,6 +1,7 @@
 package sk.tuke.kpi.oop.game.characters;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Health {
 
@@ -12,7 +13,7 @@ public class Health {
 
     private int zac_health;
     private int max_health;
-    private ArrayList<ExhaustionEffect> observer;
+    private List<ExhaustionEffect> observer;
 
 
 
@@ -36,7 +37,7 @@ public class Health {
     }
 
     public void onExhaustion(ExhaustionEffect effect){
-        this.observer.add(effect);
+        observer.add(effect);
     }
 
     public int getValue()
@@ -61,7 +62,7 @@ public class Health {
     public void drain(int amount)
     {
         int modul = Math.abs(amount);
-        if(zac_health<0) return;
+        if(zac_health<=0) return;
 
         zac_health-=modul;
         if(zac_health<0)
@@ -70,7 +71,7 @@ public class Health {
         }
         if (zac_health==0)
         {
-            this.sendToObservers();
+            sendToObservers();
         }
 
 
@@ -79,9 +80,10 @@ public class Health {
     public void exhaust()
     {
         if(zac_health == 0){
-            this.sendToObservers();
+            return;
         }
         zac_health = 0;
+        sendToObservers();
     }
 
 
