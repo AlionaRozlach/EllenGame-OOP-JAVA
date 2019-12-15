@@ -8,7 +8,13 @@ import sk.tuke.kpi.oop.game.weapons.Fireable;
 
 public class Fire <A extends Armed> extends AbstractAction<A> {
 
-    private A actor=getActor();
+    private A actor;
+
+    @Override
+    public void setActor(A actor) {
+        this.actor = actor;
+    }
+
     @Override
     public void execute(float deltaTime) {
 
