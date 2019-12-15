@@ -47,7 +47,7 @@ public class Door extends AbstractActor implements Openable, Usable<Actor> {
 
     @Override
     public void open() {
-        if(state==false)
+        if(state==false && getScene()!=null)
         {
             setAnimation(door_open);
             state = true;
@@ -61,7 +61,7 @@ public class Door extends AbstractActor implements Openable, Usable<Actor> {
 
     @Override
     public void close() {
-        if(state == true)
+        if(state == true && getScene()!=null)
         {
             setAnimation(door_close);
             state=false;
