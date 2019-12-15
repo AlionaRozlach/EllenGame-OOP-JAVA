@@ -18,8 +18,8 @@ public class EscapeRoom implements SceneListener {
         public @Nullable Actor create(@Nullable String type, @Nullable String name) {
             if(name!=null)
             {
-                if(name=="alien") return new Alien();
-                else if(name=="energy") return new Energy();
+                //if(name=="alien") return new Alien();
+               if(name=="energy") return new Energy();
                 else if(name == "ammo") return new Ammo();
                 else return null;
             }
