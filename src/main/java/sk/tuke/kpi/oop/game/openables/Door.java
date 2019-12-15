@@ -56,11 +56,11 @@ public class Door extends AbstractActor implements Openable, Usable<Actor> {
             state = true;
             doorko.play();
         }
-        control_Orientation_Open();
+        controlOrientationOpen();
 
         this.getScene().getMessageBus().publish(DOOR_OPENED, this);
     }
-    private void control_Orientation_Open()
+    private void controlOrientationOpen()
     {
         if(orientation==Orientation.HORIZONTAL) {
             getScene().getMap().getTile(this.getPosX() / 16, this.getPosY() / 16).setType(MapTile.Type.CLEAR);
@@ -81,11 +81,11 @@ public class Door extends AbstractActor implements Openable, Usable<Actor> {
             doorko.stop();
         }
 
-        control_Orientation_Close();
+        controlOrientationClose();
         this.getScene().getMessageBus().publish(DOOR_CLOSED, this);
     }
 
-    private void control_Orientation_Close()
+    private void controlOrientationClose()
     {
         if(orientation==Orientation.HORIZONTAL) {
             getScene().getMap().getTile(this.getPosX() / 16, this.getPosY() / 16).setType(MapTile.Type.WALL);
