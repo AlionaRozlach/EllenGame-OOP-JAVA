@@ -1,6 +1,7 @@
 package sk.tuke.kpi.oop.game.characters;
 
 
+import org.jetbrains.annotations.NotNull;
 import sk.tuke.kpi.gamelib.GameApplication;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
@@ -16,6 +17,7 @@ import sk.tuke.kpi.oop.game.weapons.Gun;
 
 public class Ripley extends AbstractActor implements Alive,Movable, Keeper,Armed {
     private Animation grac;
+    private Animation grac_died;
     private Health health;
     private int naboj = 10;
     private Firearm gung;
@@ -34,8 +36,9 @@ public class Ripley extends AbstractActor implements Alive,Movable, Keeper,Armed
         health = new Health(100);
         if(health.getValue()==0) {
             setAnimation(new Animation("sprites/player_die.png", 32, 32, 0.1f, Animation.PlayMode.ONCE));
-            this.getScene().getMessageBus().publish(RIPLEY_DIED, this);
+            getScene().getMessageBus().publish(RIPLEY_DIED, this);
         }
+        grac_died = new Animation("sprites/player_die.png", 32, 32, 0.1f, Animation.PlayMode.ONCE);
     }
 
     @Override
@@ -94,5 +97,15 @@ public class Ripley extends AbstractActor implements Alive,Movable, Keeper,Armed
     @Override
     public void setFirearm(Firearm weapon) {
         gung = weapon;
+    }
+
+    @Override
+    public void addedToScene(@NotNull Scene scene) {
+        super.addedToScene(scene);
+        getHealth().onExhaustion(() -> {
+            scene.getMessageBus().publish(RIPLEY_DIED, this);
+            setAnimation(grac_died);
+            getScene().getMessageBus().publish(RIPLEY_DIED, this);
+        });
     }
 }

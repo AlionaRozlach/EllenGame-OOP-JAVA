@@ -48,11 +48,14 @@ public class Bullet extends AbstractActor implements Fireable, Movable {
     private void interAli(Scene scene) {
         List<Actor> actors = new ArrayList<>();
 
+        if(!actors.isEmpty())
+        {
         for (int i = 0; i < scene.getActors().size(); i++) {
             if (this.intersects(actors.get(i)) || actors.get(i) instanceof Alien) {
                 ((Alive) actors.get(i)).getHealth().drain(10);
                 collidedWithWall();
             }
+        }
         }
     }
 

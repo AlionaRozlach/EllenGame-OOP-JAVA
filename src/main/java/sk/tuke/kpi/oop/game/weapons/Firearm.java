@@ -12,16 +12,20 @@ public abstract class Firearm {
 
     public int getAmmo()
     {
-        return min_ammo;
+        return this.min_ammo;
     }
 
     public void reload(int newAmmo)
     {
-        min_ammo+=newAmmo;
-        if(min_ammo>max_ammo)
+        if(min_ammo!=max_ammo)
         {
-            min_ammo=max_ammo;
+            min_ammo+=newAmmo;
+            if(min_ammo>max_ammo)
+            {
+                min_ammo=max_ammo;
+            }
         }
+        else return;
     }
 
 
