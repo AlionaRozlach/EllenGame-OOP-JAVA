@@ -4,9 +4,9 @@ public class LockedDoor extends Door {
    private boolean state;
 
 
-    public LockedDoor(/*Orientation orientation*/)
+    public LockedDoor(Orientation orient)
     {
-        //super(orientation);
+        super(orient);
         state =false;
 
     }
