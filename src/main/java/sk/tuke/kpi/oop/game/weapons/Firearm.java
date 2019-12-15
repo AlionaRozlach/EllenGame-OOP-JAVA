@@ -39,7 +39,7 @@ public abstract class Firearm {
     public Fireable fire(){
         if (getAmmo() > 0){
             min_ammo --;
-            return new Bullet();
+            return createBullet();
         }
         return null;
     }
