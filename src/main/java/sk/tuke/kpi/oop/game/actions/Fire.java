@@ -7,7 +7,7 @@ import sk.tuke.kpi.oop.game.characters.Armed;
 
 public class Fire <A extends Armed> extends AbstractAction<A> {
 
-    private A actor;
+    private A actor=getActor();
     @Override
     public void execute(float deltaTime) {
 
@@ -19,8 +19,5 @@ public class Fire <A extends Armed> extends AbstractAction<A> {
         setDone(true);
     }
 
-    @Override
-    public void setActor(A actor) {
-        this.actor = actor;
-    }
+
 }

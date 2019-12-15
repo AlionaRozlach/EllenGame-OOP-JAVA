@@ -11,14 +11,14 @@ import sk.tuke.kpi.oop.game.behaviours.Behaviour;
 public class Alien extends AbstractActor implements Movable,Enemy,Alive {
 
     private Health health;
-    private Behaviour<? super Alien> behaviour;
-    public Alien(Behaviour<? super Alien> behaviour)
+   // private Behaviour<? super Alien> behaviour;
+    public Alien()
     {
         Animation ally;
         ally = new Animation("sprites/alien.png",32,32,0.1f);
         setAnimation(ally);
         health=new Health(100);
-        this.behaviour=behaviour;
+      //  this.behaviour=behaviour;
     }
 
     @Override
@@ -30,7 +30,7 @@ public class Alien extends AbstractActor implements Movable,Enemy,Alive {
     public Health getHealth() {
         return health;
     }
-
+/*
     @Override
     public void addedToScene(@NotNull Scene scene) {
         super.addedToScene(scene);
@@ -38,6 +38,6 @@ public class Alien extends AbstractActor implements Movable,Enemy,Alive {
         if (behaviour!=null){
             behaviour.setUp(this);
         }
-    }
+    }*/
 
 }

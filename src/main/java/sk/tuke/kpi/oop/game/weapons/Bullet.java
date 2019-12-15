@@ -7,7 +7,7 @@ import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 import sk.tuke.kpi.oop.game.Direction;
 import sk.tuke.kpi.oop.game.Movable;
-import sk.tuke.kpi.oop.game.characters.Alien;
+//import sk.tuke.kpi.oop.game.characters.Alien;
 import sk.tuke.kpi.oop.game.characters.Alive;
 
 import java.util.ArrayList;
@@ -58,7 +58,7 @@ public class Bullet extends AbstractActor implements Fireable, Movable {
         for (int i = 0; i < scene.getActors().size(); i++) {
             if (this.intersects(actors.get(i)) && actors.get(i) instanceof Alive) {
                 ((Alive) actors.get(i)).getHealth().drain(10);
-                collidedWithWall();
+                this.collidedWithWall();
             }
         }
         }
