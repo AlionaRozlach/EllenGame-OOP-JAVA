@@ -56,6 +56,12 @@ public class Door extends AbstractActor implements Openable, Usable<Actor> {
             state = true;
             doorko.play();
         }
+        control_Orientation_Open();
+
+        this.getScene().getMessageBus().publish(DOOR_OPENED, this);
+    }
+    private void control_Orientation_Open()
+    {
         if(orientation==Orientation.HORIZONTAL) {
             getScene().getMap().getTile(this.getPosX() / 16, this.getPosY() / 16).setType(MapTile.Type.CLEAR);
             getScene().getMap().getTile(this.getPosX() / 16 + 1, this.getPosY() / 16).setType(MapTile.Type.CLEAR);
@@ -65,10 +71,7 @@ public class Door extends AbstractActor implements Openable, Usable<Actor> {
             getScene().getMap().getTile(this.getPosX() / 16, this.getPosY() / 16).setType(MapTile.Type.CLEAR);
             getScene().getMap().getTile(this.getPosX() / 16, this.getPosY() / 16+1).setType(MapTile.Type.CLEAR);
         }
-
-        this.getScene().getMessageBus().publish(DOOR_OPENED, this);
     }
-
     @Override
     public void close() {
         if(state == true && getScene()!=null)
@@ -77,6 +80,13 @@ public class Door extends AbstractActor implements Openable, Usable<Actor> {
             state=false;
             doorko.stop();
         }
+
+        control_Orientation_Close();
+        this.getScene().getMessageBus().publish(DOOR_CLOSED, this);
+    }
+
+    private void control_Orientation_Close()
+    {
         if(orientation==Orientation.HORIZONTAL) {
             getScene().getMap().getTile(this.getPosX() / 16, this.getPosY() / 16).setType(MapTile.Type.WALL);
             getScene().getMap().getTile(this.getPosX() / 16 + 1, this.getPosY() / 16).setType(MapTile.Type.WALL);
@@ -87,9 +97,7 @@ public class Door extends AbstractActor implements Openable, Usable<Actor> {
             getScene().getMap().getTile(this.getPosX() / 16, this.getPosY() / 16+1).setType(MapTile.Type.WALL);
         }
 
-        this.getScene().getMessageBus().publish(DOOR_CLOSED, this);
     }
-
     @Override
     public boolean isOpen() {
         return state;
